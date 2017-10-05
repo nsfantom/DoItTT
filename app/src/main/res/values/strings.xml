@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">DoItTT</string>
+
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Register</string>
+    <string name="text_login">Back to login.</string>
+    <string name="text_register">New to DOITApp? Register here.</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_re_password">Repeat password</string>
+    <string name="prompt_username">Username</string>
+    <string name="splash_title">DoItTT</string>
+    <string name="styled_splash_title"><![CDATA[DOIT<b><font color=#4070ff>TT</font></b>]]></string>
+
+    <string name="footer"> Footer coming soon…</string>
+    <string name="btn_go_online">Go online</string>
+
+    <string name="no_connection">No connection!</string>
+    <string name="error_invalid_password">Password is too short(3+).</string>
+    <string name="error_incorrect_password">Password is incorrect.</string>
+    <string name="error_not_match_password">Password and confirmation password do not match.</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_403">Wrong credentials.</string>
+    <string name="text_bottom">Powered by Something.</string>
+    <string name="error_invalid_email">Invalid email</string>
+    <string name="error_avatar">Avatar must be set</string>
+    <string name="description">Description</string>
+    <string name="hashtag">Hashtag</string>
+
+    <string name="error_image_select">Please, select image first.</string>
+    <string name="error_getting_location">Can\'t get image location.</string>
+    <string name="location_permission_needed">Can\'t read location data, check permissions in phone settings.</string>
+    <string name="storage_permission_needed">Can\'t read images, check permissions in phone settings.</string>
+</resources>

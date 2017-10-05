@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="app_bar_height">200dp</dimen>
+    <dimen name="item_width">200dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="spacing_small_horizontal">10dp</dimen>
+    <dimen name="spacing_small_vertical">10dp</dimen>
+    <dimen name="spacing_medium_horizontal">16dp</dimen>
+    <dimen name="spacing_medium_vertical">16dp</dimen>
+
+    <dimen name="text_vertical_margin">8dp</dimen>
+    <dimen name="elevation_medium">8dp</dimen>
+
+    <!-- Buttons -->
+    <dimen name="btn_extra_large_padding">20dp</dimen>
+    <dimen name="btn_large_padding">15dp</dimen>
+    <dimen name="btn_medium_padding">10dp</dimen>
+    <dimen name="btn_small_padding">5dp</dimen>
+    <dimen name="btn_raised_min_width">72dp</dimen>
+    <dimen name="btn_raised_height">36dp</dimen>
+    <dimen name="btn_flat_min_width">72dp</dimen>
+    <dimen name="btn_flat_height">36dp</dimen>
+
+</resources>
