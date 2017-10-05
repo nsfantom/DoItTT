@@ -24,18 +24,6 @@ import tm.fantom.doittesttask.api.model.SignIn;
  */
 
 public interface ApiService {
-//    @GET("data.php?id=1")
-//    Maybe<DataResponse> getInitData();
-
-    // https://api.github.com/search/repositories?q=org:facebook
-
-    // https://api.github.com/orgs/facebook
-//
-//    @GET("orgs/{name}")
-//    Maybe<OrgResponse> getOrg(@Path("name") String name);
-//
-//    @GET("search/repositories")
-//    Maybe<ReposResponse> getPublicRepos(@Query("q") String name, @Query("page") int page, @Query("per_page") int perPage);
 
     @Multipart
     @POST("create")

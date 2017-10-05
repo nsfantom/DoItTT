@@ -53,7 +53,7 @@ public class ApiModule {
                 .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                 .addNetworkInterceptor(provideHeadersInterceptor())
-                .addInterceptor(provideLoggingInterceptor())
+                //.addInterceptor(provideLoggingInterceptor())
                 .build();
     }
 
