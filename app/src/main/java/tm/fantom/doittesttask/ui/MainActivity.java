@@ -25,13 +25,4 @@ public class MainActivity extends AppCompatActivity implements MainFragment.List
                 .addToBackStack(null)
                 .commit();
     }
-
-    @Override public void onPlayClicked(String token) {
-        getSupportFragmentManager().beginTransaction()
-                .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left,
-                        R.anim.slide_out_right)
-                .replace(android.R.id.content, GifFragment.newInstance(token))
-                .addToBackStack(null)
-                .commit();
-    }
 }

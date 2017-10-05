@@ -1,11 +1,8 @@
 package tm.fantom.doittesttask;
 
-import android.content.ContentResolver;
-
 import javax.inject.Singleton;
 
 import dagger.Component;
-import tm.fantom.doittesttask.ui.GifFragment;
 import tm.fantom.doittesttask.ui.LoginFragment;
 import tm.fantom.doittesttask.ui.MainFragment;
 import tm.fantom.doittesttask.ui.SplashActivity;
@@ -21,5 +18,4 @@ public interface DoComponent {
     void inject(SplashActivity activity);
     void inject(MainFragment fragment);
     void inject(UploadFragment fragment);
-    void inject(GifFragment fragment);
 }

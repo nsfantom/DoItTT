@@ -13,7 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.gif.GifDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import javax.inject.Inject;
 
@@ -42,7 +50,6 @@ public class MainFragment extends Fragment {
 
     interface Listener{
         void onUploadClicked(String token);
-        void onPlayClicked(String token);
     }
 
     static MainFragment newInstance() {
@@ -55,6 +62,8 @@ public class MainFragment extends Fragment {
     @BindView(R.id.rvImages) RecyclerView rvImages;
 
     private Listener listener;
+    private GifDrawable gifDrawable;
+
 
     @Override public void onAttach(Context context) {
         if (!(getActivity() instanceof Listener)) {
@@ -110,13 +119,50 @@ public class MainFragment extends Fragment {
     }
 
     @OnClick(R.id.ivPlay) void onPlay(){
-        listener.onPlayClicked(sessionStorage.getToken());
-
         Dialog d = getDialog();
-        getDialog().setOnDismissListener(dialogInterface -> {
-
+        d.setContentView(getActivity().getLayoutInflater().inflate(R.layout.fragment_gif, null));
+        d.setOnDismissListener(dialogInterface -> {
+            if(gifDrawable!=null){
+                gifDrawable.stop();
+                gifDrawable.recycle();
+            }
         });
+        ProgressBar dialogProgressBar = d.findViewById(R.id.progressBar);
+        ImageView gifka = d.findViewById(R.id.ivGif);
+        if(isConnected()){
+            dialogProgressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorAccent),
+                    android.graphics.PorterDuff.Mode.SRC_IN);
+            dialogProgressBar.setVisibility(View.VISIBLE);
+            disposables.add(apiService.getGif(sessionStorage.getToken())
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(gifResponse -> {
+                        if(gifResponse.isSuccessful()){
+                            Timber.e("Link request: %s", gifResponse.body().getUrl());
+                            Glide.with(getActivity())
+                                    .asGif()
+                                    .load(gifResponse.body().getUrl())
+                                    .listener(new RequestListener<GifDrawable>() {
+                                        @Override
+                                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                                            return false;
+                                        }
 
+                                        @Override
+                                        public boolean onResourceReady(GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                                            dialogProgressBar.setVisibility(View.GONE);
+                                            gifDrawable = resource;
+                                            return false;
+                                        }
+                                    })
+                                    .into(gifka);
+                        } else {
+                            showError(gifResponse.errorBody().string());
+                        }
+                    }, e -> showError(e.getMessage()))
+            );
+            d.show();
+        }
     }
 
     private Dialog getDialog() {
@@ -144,5 +190,4 @@ public class MainFragment extends Fragment {
         }
         return true;
     }
-
 }
